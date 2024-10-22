@@ -10,10 +10,18 @@
 import random
 
 spisok = []
+perem = []
+
+chetchik = 0
+
 for i in range(0, 20):
     a = [random.randint(-10, 10) for x in range(4)]
     spisok.append(a)
 
 print(spisok)
 
+for i in spisok:
+    if i not in perem:
+        perem.append(i) 
+    
 numb_polz = input("Введите число ")
