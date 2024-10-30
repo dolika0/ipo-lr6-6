@@ -7,21 +7,26 @@
 
 """
 
-import random
+import random # Подключаем модуль 
 
-spisok = []
-perem = []
+spisok = [] # Создаём список
+count = 0 # Инициализация счётчика
 
-chetchik = 0
-
-for i in range(0, 20):
-    a = [random.randint(-10, 10) for x in range(4)]
-    spisok.append(a)
-
-print(spisok)
-
-for i in spisok:
-    if i not in perem:
-        perem.append(i) 
+for i in range(0, 20): # Заполнение списка
+    a = [random.randint(-10, 10) for x in range(4)] # Генератор 
+    spisok.append(a) # Добавление в список
     
-numb_polz = input("Введите число ")
+pairs = [] # Создаём второй список для уникальных комбинаций
+for i in range(len(spisok)):
+    for k in range(i+1, len(spisok)):
+        pairs.append((spisok[i], spisok[k]))
+
+print("Все уникальыне пары : \n", pairs) # Вывод уникальных пар
+
+numb = int(input("Введите целое число для проверки : ")) # Ввод числа от пользователя
+
+for e in pairs: # Перебор пар
+    if sum(e) < numb: # Условие
+       count += 1 # Увеличение счетчика пар
+
+print("Количество пар, чья сумма меньше : ", count) # Вывод
