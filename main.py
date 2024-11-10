@@ -7,26 +7,21 @@
 
 """
 
-import random # Подключаем модуль 
+import random # Модуль рандом
+arr = [[random.randint(-10,10) for i in range(4)]for j in range(20)] # Список в диапозоне от -10 до 10, 20 случайных значений по 4 числа
+arr_2 = [] # Список
 
-spisok = [] # Создаём список
-count = 0 # Инициализация счётчика
+count = 0 # Счетчик
 
-for i in range(0, 20): # Заполнение списка
-    a = [random.randint(-10, 10) for x in range(4)] # Генератор 
-    spisok.append(a) # Добавление в список
+numb = int(input("Введите число: ")) # Запрашиваем число у пользователя     
+
+for a in arr: # Цикл
+    if a not in arr_2: # Добавление уникальных пар
+        arr_2.append(a)  # Добавление
     
-pairs = [] # Создаём второй список для уникальных комбинаций
-for i in range(len(spisok)):
-    for k in range(i+1, len(spisok)):
-        pairs.append((spisok[i], spisok[k]))
-
-print("Все уникальыне пары : \n", pairs) # Вывод уникальных пар
-
-numb = int(input("Введите целое число для проверки : ")) # Ввод числа от пользователя
-
-for e in pairs: # Перебор пар
-    if sum(e) < numb: # Условие
-       count += 1 # Увеличение счетчика пар
-
-print("Количество пар, чья сумма меньше : ", count) # Вывод
+    if sum(a) < numb: # Цикл
+        count += 1 # Увеличение счётчика
+        
+print(arr) # Вывод на экран
+print(f"уникальные значения {tuple(arr_2)}") # Вывод на экран
+print("Кол-во пар, чья сумма меньше:",count) # Вывод на экран
